@@ -359,7 +359,7 @@ export default function AdminPage() {
           </div>
           {loginErr && <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-2.5 rounded-lg">{loginErr}</div>}
           <button type="submit" disabled={loginLoading} className="btn-navy w-full py-3 rounded-xl disabled:opacity-50 justify-center">
-            {loginLoading ? <><Spinner /> Masuk...</> : 'Masuk ke Dashboard'}
+            {loginLoading ? <><ButtonSpinner /> Masuk...</> : 'Masuk ke Dashboard'}
           </button>
         </form>
         <a href="/" className="block text-center mt-5 text-navy/35 text-sm hover:text-navy transition-colors">← Kembali ke website</a>
