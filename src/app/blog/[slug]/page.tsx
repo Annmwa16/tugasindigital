@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             dan 'whitespace-pre-wrap' untuk menjaga format paragraf.
           */}
           <div className="whitespace-pre-wrap break-words overflow-hidden w-full">
-            {post.content}
+            {article.content}
           </div>
         </div>
         
