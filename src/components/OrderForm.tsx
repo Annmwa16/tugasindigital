@@ -124,7 +124,7 @@ export default function OrderForm() {
         file_urls: fileUrls.join(', ') || null,
       }
 
-      await supabase.from('orders').insert([payload])
+      await (supabase.from('orders') as any).insert([payload] as any)
 
       if (GOOGLE_SCRIPT) {
         fetch(GOOGLE_SCRIPT, {
