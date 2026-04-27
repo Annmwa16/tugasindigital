@@ -88,7 +88,7 @@ export default function OrderForm() {
     const urls: string[] = []
     for (const f of files) {
       const path = `${id}/${Date.now()}_${f.name}`
-      const { data, error } = await supabase.from('order-files').upload(path, f)
+      const { data, error } = await supabase.storage.from('order-files').upload(path, f)
       if (!error && data) {
         const { data: u } = supabase.storage.from('order-files').getPublicUrl(path)
         urls.push(u.publicUrl)
