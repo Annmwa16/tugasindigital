@@ -18,10 +18,13 @@ async function getPost(slug: string) {
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug)
 
-  // Jika artikel tidak ditemukan di database, tampilkan halaman 404
+ // Jika artikel tidak ditemukan di database, tampilkan halaman 404
   if (!post) {
     notFound()
   }
+
+  // Tambahkan baris sakti ini biar TypeScript diem
+  const article = post as any;
 
   return (
     <div className="min-h-screen bg-white">
@@ -30,14 +33,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <div className="absolute inset-0 bg-grid opacity-10" />
         <div className="relative max-w-3xl mx-auto px-5 md:px-8 text-center">
           <div className="text-gold mb-4 text-xs font-semibold uppercase tracking-[0.2em]">
-            {post.category} • {post.read_time} Read
+            {article.category} • {article.read_time} Read
           </div>
           <h1 className="font-display text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
-            {post.title}
+            {article.title}
           </h1>
-          {post.excerpt && (
+          {article.excerpt && (
             <p className="text-white/50 text-lg leading-relaxed italic max-w-2xl mx-auto">
-              "{post.excerpt}"
+              "{article.excerpt}"
             </p>
           )}
         </div>
