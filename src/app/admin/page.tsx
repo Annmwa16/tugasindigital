@@ -355,7 +355,7 @@ export default function AdminPage() {
             <Icon.Lock />
           </div>
           <div className="font-display text-2xl font-semibold text-navy">Admin Panel</div>
-          <p className="text-navy/40 text-sm mt-1">Tugasin Digital — Akses Terbatas</p>
+          <p className="text-navy/40 text-sm mt-1">Tugasin Digital — Akses Terbatas.</p>
         </div>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
