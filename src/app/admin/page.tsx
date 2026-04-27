@@ -161,7 +161,13 @@ export default function AdminPage() {
   async function saveOrder() {
     if (!editingOrder) return; setSavingOrder(true)
     try {
-      const { error } = await supabase.from('orders').update({ status: editingOrder.status, payment_status: editingOrder.payment_status, price: editingOrder.price, notes: editingOrder.notes, result_files: editingOrder.result_files }).eq('id', editingOrder.id)
+      const { error } = await supabase.from('orders').update({ 
+        status: editingOrder.status, 
+        payment_status: editingOrder.payment_status, 
+        price: editingOrder.price, 
+        notes: editingOrder.notes, 
+        result_files: editingOrder.result_files 
+      }).eq('id', editingOrder.id)
       if (error) throw error
       toast.success('Order diperbarui'); setEditingOrder(null); loadOrders()
     } catch { toast.error('Gagal menyimpan') }
