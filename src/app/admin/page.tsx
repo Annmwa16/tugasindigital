@@ -906,7 +906,7 @@ function ModalFooter({ onClose, onSave, saving }: { onClose: () => void; onSave:
     <div className="flex gap-3 mt-6 pt-5 border-t border-platinum/50">
       <button onClick={onClose} className="btn-ghost flex-1 rounded-xl py-3">Batal</button>
       <button onClick={onSave} disabled={saving} className="btn-gold flex-1 rounded-xl py-3 disabled:opacity-50 justify-center gap-2">
-        {saving ? <ButtonSpinner /> Menyimpan...</> : 'Simpan'}
+        {saving ? <><ButtonSpinner /> Menyimpan...</> : 'Simpan'}
       </button>
     </div>
   )
