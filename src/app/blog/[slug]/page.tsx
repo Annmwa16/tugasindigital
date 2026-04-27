@@ -7,7 +7,10 @@ import { notFound } from 'next/navigation'
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const [post, setPost] = useState<any>(null)
   const [loading, setLoading] = useState(true)
-  const supabase = createClientComponentClient()
+  const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
   useEffect(() => {
     async function getPost() {
