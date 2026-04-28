@@ -7,10 +7,10 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Beranda",   href: "/" },
-  { label: "Layanan",   href: "/#services" },
-  { label: "Testimoni", href: "/#testimonials" },
-  { label: "Cek Order", href: "/track" },
+  { label: "Beranda",    href: "/" },
+  { label: "Portofolio", href: "/portofolio" }, // Update dari Layanan
+  { label: "Blog",       href: "/blog" },       // Update dari Testimoni
+  { label: "Cek Order",  href: "/track" },
 ];
 
 export default function Navbar() {
