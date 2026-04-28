@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Beranda",    href: "/" },
-  { label: "Portofolio", href: "/portofolio" }, // Update dari Layanan
+  { label: "portofolio", href: "/portfolio" }, // Update dari Layanan
   { label: "Blog",       href: "/blog" },       // Update dari Testimoni
   { label: "Cek Order",  href: "/track" },
 ];
