@@ -3,32 +3,28 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-type PillarKey = 'all' | 'creative' | 'growth' | 'enterprise' | 'academic'
+type PillarKey = 'all' | 'creative' | 'growth' | 'enterprise'
 
 const PILLARS: { key: PillarKey; label: string; subtitle: string; accent: string }[] = [
-  { key: 'all',        label: 'Semua',          subtitle: '',                          accent: 'border-navy/20' },
-  { key: 'creative',   label: 'Creative',        subtitle: 'UI, Design & Branding',    accent: 'border-rose-300' },
-  { key: 'growth',     label: 'Growth',          subtitle: 'Social Media & Marketing', accent: 'border-amber-300' },
-  { key: 'enterprise', label: 'Enterprise',      subtitle: 'Sistem & Infrastruktur',   accent: 'border-cyan-300' },
-  { key: 'academic',   label: 'Bantuan Tugas Akademik',      subtitle: 'Akademik & Riset',         accent: 'border-purple-300' },
+  { key: 'all',        label: 'Semua',          subtitle: '',                        accent: 'border-navy/20' },
+  { key: 'creative',   label: 'Creative',       subtitle: 'UI, Design & Branding',   accent: 'border-rose-300' },
+  { key: 'growth',     label: 'Growth',         subtitle: 'Social Media & Marketing',accent: 'border-amber-300' },
+  { key: 'enterprise', label: 'Enterprise',     subtitle: 'Sistem & Infrastruktur',  accent: 'border-cyan-300' },
 ]
 
 const SERVICES = [
-  { pillar: 'creative' as PillarKey,   icon: <DesignIcon />,     title: 'UI/UX Design',             subtitle: 'Web & Mobile Interface',  desc: 'Desain antarmuka clean & minimalis untuk web, aplikasi, dan dashboard profesional.', price: 'Rp 150rb+', tags: ['Figma', 'Responsive', 'Prototype'] },
-  { pillar: 'creative' as PillarKey,   icon: <BrushIcon />,      title: 'Branding Kit',             subtitle: 'Visual Identity System',  desc: 'Logo, color palette, typography, dan brand guideline untuk tampilan yang konsisten.', price: 'Rp 200rb+', tags: ['Logo', 'Brand Guide', 'Assets'] },
-  { pillar: 'creative' as PillarKey,   icon: <SlideIcon />,      title: 'Pitch Deck & PPT',         subtitle: 'Storytelling Visual',     desc: 'Slide presentasi berbasis storytelling untuk sidang, investor pitch, atau company profile.', price: 'Rp 100rb+', tags: ['PowerPoint', 'Canva', 'Print'] },
-  { pillar: 'creative' as PillarKey,   icon: <VideoIcon />,      title: 'UGC Agency',               subtitle: 'User Generated Content',  desc: 'Konten video review produk autentik dari talent terpilih — lebih dipercaya dari iklan biasa.', price: 'Rp 300rb+', tags: ['Video', 'TikTok', 'Review'] },
+  { pillar: 'creative' as PillarKey,   icon: <DesignIcon />,     title: 'UI/UX Design',            subtitle: 'Web & Mobile Interface',  desc: 'Desain antarmuka clean & minimalis untuk web, aplikasi, dan dashboard profesional.', price: 'Rp 150rb+', tags: ['Figma', 'Responsive', 'Prototype'] },
+  { pillar: 'creative' as PillarKey,   icon: <BrushIcon />,      title: 'Branding Kit',            subtitle: 'Visual Identity System',  desc: 'Logo, color palette, typography, dan brand guideline untuk tampilan yang konsisten.', price: 'Rp 200rb+', tags: ['Logo', 'Brand Guide', 'Assets'] },
+  { pillar: 'creative' as PillarKey,   icon: <SlideIcon />,      title: 'Pitch Deck & PPT',        subtitle: 'Storytelling Visual',     desc: 'Slide presentasi berbasis storytelling untuk sidang, investor pitch, atau company profile.', price: 'Rp 100rb+', tags: ['PowerPoint', 'Canva', 'Print'] },
+  { pillar: 'creative' as PillarKey,   icon: <VideoIcon />,      title: 'UGC Agency',              subtitle: 'User Generated Content',  desc: 'Konten video review produk autentik dari talent terpilih — lebih dipercaya dari iklan biasa.', price: 'Rp 300rb+', tags: ['Video', 'TikTok', 'Review'] },
   { pillar: 'growth' as PillarKey,     icon: <SocialIcon />,     title: 'Social Media Management', subtitle: 'IG, TikTok & LinkedIn',   desc: 'Pengelolaan konten, template Canva, riset hashtag, AR Filter, dan scheduling terstruktur.', price: 'Rp 200rb+', tags: ['Instagram', 'TikTok', 'Canva'] },
-  { pillar: 'growth' as PillarKey,     icon: <PersonIcon />,     title: 'Personal Branding',        subtitle: 'LinkedIn & Instagram',    desc: 'Optimasi profil profesional dan ghostwriting konten agar Anda tampil sebagai thought leader.', price: 'Rp 250rb+', tags: ['LinkedIn', 'Ghostwriting', 'SEO'] },
-  { pillar: 'growth' as PillarKey,     icon: <TrendIcon />,      title: 'Engagement Booster',       subtitle: 'Social Proof & Reach',    desc: 'Strategi peningkatan kredibilitas sosial yang terukur untuk membangun kepercayaan audiens.', price: 'Rp 150rb+', tags: ['Engagement', 'Growth', 'Analytics'] },
-  { pillar: 'growth' as PillarKey,     icon: <SchoolIcon />,     title: 'Digital Legacy',           subtitle: 'Aetheris Method',         desc: 'Branding eksklusif untuk institusi pendidikan: web angkatan, yearbook digital, event system.', price: 'Rp 500rb+', tags: ['Education', 'Web', 'Yearbook'] },
-  { pillar: 'enterprise' as PillarKey, icon: <ShieldIcon />,     title: 'Digital Asset Security',   subtitle: 'Cloud & Infrastructure',  desc: 'Pengamanan email & data bisnis, migrasi Cloud, dan setup sistem kerja tim yang efisien.', price: 'Rp 200rb+', tags: ['Security', 'Cloud', 'Backup'] },
-  { pillar: 'enterprise' as PillarKey, icon: <SpeedIcon />,      title: 'Web Maintenance & SEO',    subtitle: 'Optimasi & Growth',       desc: 'Perawatan web pasca-rilis, optimasi kecepatan, dan strategi SEO untuk halaman pertama Google.', price: 'Rp 180rb+', tags: ['SEO', 'Speed', 'Google'] },
-  { pillar: 'enterprise' as PillarKey, icon: <BotIcon />,        title: 'AI Research & Scraping',   subtitle: 'Otomasi & Analitik',      desc: 'Pengumpulan data massal otomatis menggunakan AI untuk riset pasar dan kompetitor analysis.', price: 'Rp 300rb+', tags: ['AI', 'Data', 'Python'] },
-  { pillar: 'enterprise' as PillarKey, icon: <AssistantIcon />,  title: 'Virtual Assistant Pro',    subtitle: 'Remote Administrative',   desc: 'Asisten jarak jauh untuk jadwal, invoicing, email management, dan tugas administratif.', price: 'Rp 350rb+', tags: ['Admin', 'Email', 'Schedule'] },
-  { pillar: 'academic' as PillarKey,   icon: <PenIcon />,        title: 'Makalah & Essay',     subtitle: 'Akademik Terstruktur',    desc: 'Penulisan makalah, essay, dan laporan akademik dengan referensi valid dan format tepat.', price: 'Rp 50rb+', tags: ['Makalah', 'Essay', 'APA'] },
-  { pillar: 'academic' as PillarKey,   icon: <CodeIcon />,       title: 'Coding & Tugas',      subtitle: 'Programming Assignment',  desc: 'Penyelesaian tugas coding (Python, JS, PHP, SQL) dan proyek pemrograman kampus.', price: 'Rp 75rb+', tags: ['Python', 'JavaScript', 'PHP'] },
-  { pillar: 'academic' as PillarKey,   icon: <ChartIcon />,      title: 'Riset & Analisis Data',    subtitle: 'Statistik & SPSS',        desc: 'Pengolahan data SPSS, interpretasi hasil uji, dan penyusunan bab hasil penelitian.', price: 'Rp 100rb+', tags: ['SPSS', 'Statistik', 'Laporan'] },
+  { pillar: 'growth' as PillarKey,     icon: <PersonIcon />,     title: 'Personal Branding',       subtitle: 'LinkedIn & Instagram',    desc: 'Optimasi profil profesional dan ghostwriting konten agar Anda tampil sebagai thought leader.', price: 'Rp 250rb+', tags: ['LinkedIn', 'Ghostwriting', 'SEO'] },
+  { pillar: 'growth' as PillarKey,     icon: <TrendIcon />,      title: 'Engagement Booster',      subtitle: 'Social Proof & Reach',    desc: 'Strategi peningkatan kredibilitas sosial yang terukur untuk membangun kepercayaan audiens.', price: 'Rp 150rb+', tags: ['Engagement', 'Growth', 'Analytics'] },
+  { pillar: 'growth' as PillarKey,     icon: <SchoolIcon />,     title: 'Digital Legacy',          subtitle: 'Aetheris Method',         desc: 'Branding eksklusif untuk institusi pendidikan: web angkatan, yearbook digital, event system.', price: 'Rp 500rb+', tags: ['Education', 'Web', 'Yearbook'] },
+  { pillar: 'enterprise' as PillarKey, icon: <ShieldIcon />,     title: 'Digital Asset Security',  subtitle: 'Cloud & Infrastructure',  desc: 'Pengamanan email & data bisnis, migrasi Cloud, dan setup sistem kerja tim yang efisien.', price: 'Rp 200rb+', tags: ['Security', 'Cloud', 'Backup'] },
+  { pillar: 'enterprise' as PillarKey, icon: <SpeedIcon />,      title: 'Web Maintenance & SEO',   subtitle: 'Optimasi & Growth',       desc: 'Perawatan web pasca-rilis, optimasi kecepatan, dan strategi SEO untuk halaman pertama Google.', price: 'Rp 180rb+', tags: ['SEO', 'Speed', 'Google'] },
+  { pillar: 'enterprise' as PillarKey, icon: <BotIcon />,        title: 'AI Research & Scraping',  subtitle: 'Otomasi & Analitik',      desc: 'Pengumpulan data massal otomatis menggunakan AI untuk riset pasar dan kompetitor analysis.', price: 'Rp 300rb+', tags: ['AI', 'Data', 'Python'] },
+  { pillar: 'enterprise' as PillarKey, icon: <AssistantIcon />,  title: 'Virtual Assistant Pro',   subtitle: 'Remote Administrative',   desc: 'Asisten jarak jauh untuk jadwal, invoicing, email management, dan tugas administratif.', price: 'Rp 350rb+', tags: ['Admin', 'Email', 'Schedule'] },
 ]
 
 // Inline SVG icons (Lucide-style)
@@ -44,16 +40,12 @@ function ShieldIcon()    { return <svg width="20" height="20" viewBox="0 0 24 24
 function SpeedIcon()     { return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> }
 function BotIcon()       { return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="8" width="20" height="12" rx="2"/><path d="M12 2v6M8 2h8"/><circle cx="9" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.5" fill="currentColor" stroke="none"/><path d="M7 18h10"/></svg> }
 function AssistantIcon() { return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> }
-function PenIcon()       { return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> }
-function CodeIcon()      { return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> }
-function ChartIcon()     { return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> }
 
 const PILLAR_ACCENT: Record<PillarKey, string> = {
   all:        'text-navy/40',
   creative:   'text-rose-500',
   growth:     'text-amber-500',
   enterprise: 'text-cyan-500',
-  academic:   'text-purple-500',
 }
 
 const PILLAR_ICON_BG: Record<PillarKey, string> = {
@@ -61,7 +53,6 @@ const PILLAR_ICON_BG: Record<PillarKey, string> = {
   creative:   'bg-rose-50 group-hover:bg-rose-100',
   growth:     'bg-amber-50 group-hover:bg-amber-100',
   enterprise: 'bg-cyan-50 group-hover:bg-cyan-100',
-  academic:   'bg-purple-50 group-hover:bg-purple-100',
 }
 
 export default function Pillars() {
@@ -73,13 +64,13 @@ export default function Pillars() {
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="section-label mb-5">Empat Pilar Keahlian</div>
+          <div className="section-label mb-5">Tiga Pilar Keahlian</div>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-navy mb-4">
             Solusi Digital
             <span className="block italic text-shimmer">Lengkap</span>
           </h2>
           <p className="text-navy/50 text-base max-w-xl mx-auto">
-            Dari desain visual hingga infrastruktur teknis — dan juga Membantu Tugas akademik. Satu tim, semua kebutuhan.
+            Dari desain visual hingga infrastruktur teknis. Satu tim, semua kebutuhan.
           </p>
         </div>
 
