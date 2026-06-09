@@ -27,7 +27,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gold text-[10px] font-semibold tracking-widest uppercase mb-4">Layanan</h4>
             <ul className="space-y-2.5">
-              {["UI/UX Design","Social Media","Personal Branding","Web & SEO","AI Research","Bantuan Tugas","Curhat Digital"].map(s => (
+              {["UI/UX Design","Social Media","Personal Branding","Web & SEO","AI Research","Curhat Digital"].map(s => (
                 <li key={s}><Link href={"/#layanan"} className="text-white/40 text-sm hover:text-gold transition-colors">{s}</Link></li>
               ))}
             </ul>
