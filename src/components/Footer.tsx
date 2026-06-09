@@ -13,7 +13,7 @@ export default function Footer() {
               Tugasin <span className="text-shimmer">Digital</span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed max-w-sm mb-6">
-              Agency digital premium dengan empat pilar: Creative, Growth, Enterprise, dan Membantu Tugas Akademik. Satu tim, semua kebutuhan digital Anda.
+              Agency digital premium dengan empat pilar: Creative, Growth, Enterprise, Satu tim, semua kebutuhan digital Anda.
             </p>
             <a href={"https://wa.me/" + WA_NUMBER + "?text=Halo%20Tugasin%20Digital!%20Saya%20ingin%20berkonsultasi."}
               target="_blank" rel="noopener noreferrer"
